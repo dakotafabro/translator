@@ -1,0 +1,20 @@
+{
+  "name": "translator",
+  "version": "0.1.0",
+  "type": "convention",
+  "description": "Decompression instrument for code. Translates implementation into plain-language narratives. Four modes: narrate (what does this do?), diff (what changed?), contract (what does this promise?), verify (does the code match the design doc?). Compression-aware, layered output, audience-adjustable. Optionally grounds narrations in world model context when one is available.",
+  "entry": "SKILL.md",
+  "scope": "session",
+  "token_cost": 2200,
+  "keywords": ["code-comprehension", "plain-language", "design-verification", "compression-of-intent", "pr-workflow", "architecture"],
+  "author": {
+    "name": "Dakota Fabro",
+    "github": "dakotafabro"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/dakotafabro/translator",
+  "agents": ["goose", "claude-code", "codex", "cursor"],
+  "dependencies": [],
+  "conflicts": [],
+  "peers": ["world-model", "learning-mode", "mastery"]
+}
