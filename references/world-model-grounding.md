@@ -138,7 +138,7 @@ During narration, the translator may discover:
 
 These signals are informational. They don't block the narration. But they
 accumulate into a world model maintenance backlog that can be addressed during
-Phase 6 (Encode) or during dedicated world model maintenance sessions.
+a post-ship documentation pass or during dedicated world model maintenance sessions.
 
 ## Without a World Model
 

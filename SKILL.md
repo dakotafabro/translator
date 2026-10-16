@@ -30,7 +30,7 @@ The translator activates when any of these occur:
 - Diff: "what changed" / "narrate this diff" / "narrate this PR"
 - Contract: "what does this promise" / "what's the contract"
 - Verify: "does this match the design doc" / "verify alignment"
-- Workflow: automatically suggested at Phase 4 completion (before PR push) and Phase 6 (encode)
+- Workflow: suggested when implementation is complete (before a PR is pushed) and after a change ships
 
 ## Mode Selection
 
@@ -52,7 +52,7 @@ Every translation targets an audience. Auto-detect from context, but allow overr
 | Lens | Voice | When |
 |---|---|---|
 | **Engineer** | Technical, decision-focused, names types and patterns | PR review, code exploration, self-understanding |
-| **Team** | Architectural, trade-off-focused, explains why not just what | Design previews, team discussions, Slack summaries |
+| **Team** | Architectural, trade-off-focused, explains why not just what | Design reviews, team discussions, chat summaries |
 | **Stakeholder** | Outcome-focused, no implementation details, answers "what does the user get?" | PM updates, sprint reviews, external communication |
 
 Default is Engineer unless context indicates otherwise.
@@ -130,11 +130,11 @@ The translator is standalone but composes with existing workflows. These integra
 
 | Workflow | Phase | How |
 |---|---|---|
-| Feature build | Phase 4 (Build) complete | Run `verify` against design doc + `.feedback.json` to catch drift before PR push |
-| Feature build | Phase 6 (Encode) | Run `narrate` on shipped code to generate the "what was built" summary |
+| Feature build | Implementation complete | Run `verify` against the design doc and any review feedback file to catch drift before the PR is pushed |
+| Feature build | After the change ships | Run `narrate` on shipped code to generate the "what was built" summary |
 | PR review | Before forming opinion | Run `diff` on the PR to get a narrative, then compare to your own reading |
 | PR description | Draft generation | Run `diff` on the branch, edit the summary layer down to brief PR format |
-| Design preview | After feedback incorporated | Run `verify` to confirm feedback decisions were implemented |
+| Design review | After feedback incorporated | Run `verify` to confirm feedback decisions were implemented |
 
 ## Behavioral Instrument Properties
 
@@ -148,7 +148,7 @@ These properties are emergent - they don't require additional implementation. Th
 
 ## Voice Rules
 
-Inherits Dakota's writing conventions:
+Default voice for translator output. A project's own writing conventions take precedence where they differ.
 - No em dashes. Use spaced hyphens or restructure.
 - No block quote characters in output.
 - Conversational, concise, direct.

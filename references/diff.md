@@ -35,5 +35,5 @@ Four layers when world model grounding is active, three without:
 ## Audience Adjustment
 
 - **Engineer:** Name the specific types, functions, and patterns affected. Call out migration concerns.
-- **Team:** Explain what capability changed and what the trade-offs were. Good for design preview updates.
+- **Team:** Explain what capability changed and what the trade-offs were. Good for design review updates.
 - **Stakeholder:** Describe what's different for the user. No file names, no types.

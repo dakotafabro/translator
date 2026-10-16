@@ -9,13 +9,13 @@ Two artifacts:
 2. **Implementation** - a file, module, PR diff, or directory
 
 Optionally:
-3. **Feedback JSON** - a `.feedback.json` sidecar from the design preview workflow. If it exists alongside the design doc, load it automatically.
+3. **Review feedback file** - a JSON file of resolved review feedback kept next to the design doc (for example `<design-doc>.feedback.json`, with entries typed as decisions, questions, risks or alternatives). If it exists, load it automatically.
 
 ## Process
 
 1. **Load the design doc.** Read the full document. Extract: stated goals, architectural decisions, data flow description, risk assessment, PR stack plan.
 
-2. **Load the feedback (if present).** Read the `.feedback.json`. Extract: resolved decisions (type: "decision"), answered questions, identified risks, accepted alternatives. These are team-level constraints that the implementation should reflect.
+2. **Load the feedback (if present).** Read the feedback file. Extract: resolved decisions (type: "decision"), answered questions, identified risks, accepted alternatives. These are team-level constraints that the implementation should reflect.
 
 3. **Load the implementation.** Read the code. If it's a PR diff, read the diff. If it's a directory, read the key files (entry points, models, use cases).
 
@@ -34,7 +34,7 @@ Optionally:
 
    **Extra** - Things in the code that the design doc didn't mention. New capabilities, additional error handling, edge cases discovered during build. These are fine but should be documented.
 
-6. **Check feedback incorporation.** For each resolved decision in the `.feedback.json`, verify it appears in the implementation. If a team decision was not incorporated, flag it explicitly. This is the highest-priority finding.
+6. **Check feedback incorporation.** For each resolved decision in the feedback file, verify it appears in the implementation. If a team decision was not incorporated, flag it explicitly. This is the highest-priority finding.
 
 ## Output
 
@@ -56,17 +56,17 @@ Extra:
 - [code does X, not in plan]
 
 Unincorporated feedback:
-- [decision from .feedback.json not reflected in code]
+- [decision from the feedback file not reflected in code]
 ```
 
 No judgment in the output. The verify report is a delta, not a grade. The practitioner decides what to do with it.
 
 ## When to Run
 
-- **Phase 4 complete, before PR push:** Catch drift while it's cheap to fix
-- **Phase 6 (Encode):** Generate the plan-vs-reality section for the design doc's post-build appendix
+- **Implementation complete, before the PR is pushed:** Catch drift while it's cheap to fix
+- **After the change ships:** Generate the plan-vs-reality section for the design doc's post-build appendix
 - **After addressing PR review feedback:** Verify that review comments were incorporated
-- **After design preview feedback:** Verify that team decisions were implemented
+- **After design review feedback:** Verify that team decisions were implemented
 
 ## Compression Signal
 
